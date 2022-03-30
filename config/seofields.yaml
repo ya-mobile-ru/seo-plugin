@@ -1,0 +1,145 @@
+meta_title:
+  comment: Page title
+  label: yamobile.seo::lang.config.meta_title
+  type: text
+  span: full
+  tab: cms::lang.editor.meta
+  attributes:
+    data-seo: title
+    data-counter: 1
+    data-min: 30
+    data-max: 60
+
+meta_description:
+  comment: Page description
+  label: yamobile.seo::lang.config.meta_description
+  cssClass: char-counter
+  type: textarea
+  size: tiny
+  span: full
+  tab: cms::lang.editor.meta
+  attributes:
+    data-seo: description
+    data-counter: 1
+    data-min: 100
+    data-max: 160
+
+canonical_url:
+  label: Canonical URL
+  type: text
+  tab: cms::lang.editor.meta
+  span: full
+
+robot_index:
+  label: robots index
+  type: balloon-selector
+  tab: cms::lang.editor.meta
+  options:
+      index: index
+      noindex: noindex
+  comment: yamobile.seo::lang.config.index
+  span: left
+  default: index
+
+robot_follow :
+    label: robots follow
+    type: balloon-selector
+    tab: cms::lang.editor.meta
+    options:
+        follow: follow
+        nofollow: nofollow
+    comment: yamobile.seo::lang.config.follow
+    span: right
+    default: follow
+
+use_in_sitemap:
+  label: yamobile.seo::lang.config.use_in_sitemap
+  default: false
+  type: switch
+  tab: Sitemap
+  span: full
+
+priority:
+  label: yamobile.seo::lang.config.priority
+  type: dropdown
+  tab: Sitemap
+  span: auto
+  options:
+    1.0: '1.0'
+    0.9: '0.9'
+    0.8: '0.8'
+    0.7: '0.7'
+    0.6: '0.6'
+    0.5: '0.5'
+    0.4: '0.4'
+    0.3: '0.3'
+    0.2: '0.2'
+    0.1: '0.1'
+
+model_class:
+  label: yamobile.seo::lang.config.model_class.label
+  comment: yamobile.seo::lang.config.model_class.comment
+  tab: Sitemap
+  type: text
+  span: auto
+
+changefreq:
+  label: yamobile.seo::lang.config.changefreq
+  type: dropdown
+  tab: Sitemap
+  span: auto
+  options:
+    always: 'always'
+    hourly: 'hourly'
+    daily: 'daily'
+    weekly: 'weekly'
+    monthly: 'monthly'
+    yearly: 'yearly'
+    never: 'never'
+
+og_title:
+    label: og:title (dynamic)
+    tab: Open Graph
+    span: auto
+    comment: title
+    placeholder: yamobile.seo::lang.config.og_title
+    attributes:
+        data-counter: 1
+        data-min: 30
+        data-max: 60
+        data-seo: title
+
+og_type:
+    label: og:type (dynamic)
+    tab: Open Graph
+    span: auto
+    placeholder: yamobile.seo::lang.config.og_type
+
+og_description:
+    label: og:description (dynamic)
+    tab: Open Graph
+    type: textarea
+    size: tiny
+    span: auto
+    comment: description
+    placeholder: yamobile.seo::lang.config.og_description
+    attributes:
+      data-counter: 1
+      data-min: 100
+      data-max: 160
+      data-seo: description
+
+og_image:
+    label: og:image
+    type: mediafinder
+    mode: image
+    tab: Open Graph
+    span: auto
+    commentAbove: yamobile.seo::lang.config.og_image
+
+og_ref_image:
+    label: og:image (dynamic)
+    tab: Open Graph
+    span: auto
+    placeholder: "{{ example.image }}"
+    comment: yamobile.seo::lang.config.og_ref_image

@@ -1,0 +1,122 @@
+tabs:
+    fields:
+        use_canonical:
+            tab: Meta
+            label: 'yamobile.seo::lang.settings.use_canonical'
+            span: auto
+            type: switch
+            default: false
+        site_name:
+            tab: Meta
+            label: 'yamobile.seo::lang.settings.site_name.label'
+            span: left
+            type: text
+        site_name_position:
+            tab: Meta
+            label: 'yamobile.seo::lang.settings.site_name.label_pos'
+            options:
+                disable: 'yamobile.seo::lang.settings.site_name.nowhere_pos'
+                prefix: 'yamobile.seo::lang.settings.site_name.prefix_pos'
+                suffix: 'yamobile.seo::lang.settings.site_name.suffix_pos'
+            span: auto
+            type: radio
+            commentAbove: 'yamobile.seo::lang.settings.site_name.comment_pos'
+            default: disable
+        site_name_separator:
+            tab: Meta
+            label: 'yamobile.seo::lang.settings.site_name.separator'
+            span: auto
+            type: text
+            max: 1
+            comment: 'yamobile.seo::lang.settings.site_name.separator_comment'
+            placeholder: '|'
+        stock_description:
+            tab: Meta
+            label: 'yamobile.seo::lang.settings.stock_description.label'
+            span: full
+            size: ''
+            type: textarea
+            commentAbove: 'yamobile.seo::lang.settings.stock_description.comment'
+        extra_meta:
+            tab: Meta
+            label: 'yamobile.seo::lang.settings.extra_meta'
+            size: huge
+            language: html
+            span: full
+            type: codeeditor
+        enable_sitemap:
+            tab: Sitemap
+            label: 'yamobile.seo::lang.settings.enable_sitemap'
+            span: fill
+            type: switch
+            default: false
+        sitemap_preview:
+            tab: Sitemap
+            type: partial
+            path: $/yamobile/seo/models/settings/_sitemap_preview.htm
+            span: auto
+            trigger:
+                action: show
+                field: enable_sitemap
+                condition: checked
+        enable_robots_txt:
+            tab: Robots
+            label: 'yamobile.seo::lang.settings.enable_robots_txt'
+            span: auto
+            type: switch
+            default: false
+        enable_robots_meta:
+            tab: Robots
+            label: 'yamobile.seo::lang.settings.enable_robots_meta'
+            span: auto
+            type: switch
+            default: false
+        robots_preview:
+            tab: Robots
+            type: partial
+            path: $/yamobile/seo/models/settings/_robots_preview.htm
+            span: left
+            trigger:
+                action: show
+                field: enable_robots_txt
+                condition: checked
+        robots_txt:
+            tab: Robots
+            label: robots.txt
+            size: giant
+            language: plain_text
+            span: full
+            trigger:
+                action: show
+                field: enable_robots_txt
+                condition: checked
+            type: codeeditor
+            default: "User-agent: *\r\nAllow: /\r\r\nSitemap: $domain/sitemap.xml"
+        enable_og:
+            tab: Open Graph
+            label: 'yamobile.seo::lang.settings.enable_og'
+            type: switch
+            default: false
+            span: auto
+        site_image:
+            tab: Open Graph
+            label: 'Site image'
+            mode: image
+            span: auto
+            imageWidth: 400
+            trigger:
+                action: show
+                field: enable_og
+                condition: checked
+            type: mediafinder
+        og_locale:
+            tab: Open Graph
+            label: 'og:locale'
+            trigger:
+                action: show
+                field: enable_og
+                condition: checked
+            type: text
+            default: ru_RU
+            span: auto
+            comment: 'Default is en_US'

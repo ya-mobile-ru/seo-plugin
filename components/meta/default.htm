@@ -1,0 +1,45 @@
+{% set self = __SELF__ %}
+{% set settings = __SELF__.settings %}
+{% set robots = [viewBag.robot_index, viewBag.robot_follow] %}
+
+<title>
+	{{- settings.site_name and settings.site_name_position == 'prefix' ? settings.site_name~' '~settings.site_name_separator~' ':'' -}}
+	{{ include(template_from_string(viewBag.meta_title)) | default(viewBag.title) }}
+	{{- settings.site_name and settings.site_name_position == 'suffix' ? ' '~settings.site_name_separator~' '~settings.site_name -}}
+</title>
+<meta name="description" content="{{ include(template_from_string(viewBag.meta_description))|default(settings.stock_description) }}" />
+{% if settings.use_canonical %}
+	<link rel="canonical" href="{{ viewBag.canonical_url|url }}">
+{% endif %}
+
+{%- if settings.enable_robots_meta and (viewBag.robot_index!='index' or viewBag.robot_follow!='follow') and (viewBag.robot_index and viewBag.robot_follow) %}
+	<meta name="robots" content="{{ robots|join(', ') }}" />
+{% endif %}
+
+{% if settings.enable_og %}
+	<meta property="og:type" content="{{ include(template_from_string(viewBag.og_type))  ?: 'website' }}" />
+	<meta property="og:title" content="{{- settings.site_name and settings.site_name_position == 'prefix' ? settings.site_name~' '~settings.site_name_separator~' ':'' -}}{{ include(template_from_string(viewBag.meta_title)) | default(viewBag.title) }}{{- settings.site_name and settings.site_name_position == 'suffix' ? ' '~settings.site_name_separator~' '~settings.site_name -}}" />
+	<meta property="og:description" content="{{ include(template_from_string(viewBag.meta_description))|default(settings.stock_description) }}" />
+	<meta property="og:url" content="{{ viewBag.canonical_url|url }}" />
+	<meta property="og:locale" content="{{ settings.og_locale }}" />
+	{% if settings.site_image -%}
+		<meta property="og:image" content="{{
+			viewBag.og_ref_image ? viewBag.og_ref_image|media|url : ''
+			| default( viewBag.og_image ? viewBag.og_image|media|url : '' )
+			| default( settings.site_image ? settings.site_image|media|url : '' )
+		}}" />
+	{% endif %}
+	<meta name="twitter:title" content="{{- settings.site_name and settings.site_name_position == 'prefix' ? settings.site_name~' '~settings.site_name_separator~' ':'' -}}{{ include(template_from_string(viewBag.meta_title)) | default(viewBag.title) }}{{- settings.site_name and settings.site_name_position == 'suffix' ? ' '~settings.site_name_separator~' '~settings.site_name -}}">
+	<meta name="twitter:description" content="{{ include(template_from_string(viewBag.meta_description))|default(settings.stock_description) }}">
+	{% if settings.site_image -%}
+		<meta name="twitter:image" content="{{
+			viewBag.og_ref_image ? viewBag.og_ref_image|media|url : ''
+			| default( viewBag.og_image ? viewBag.og_image|media|url : '' )
+			| default( settings.site_image ? settings.site_image|media|url : '' )
+		}}" />
+	{% endif %}
+{% endif %}
+
+{% if settings.extra_meta %}
+	{{ settings.extra_meta | raw }}
+{% endif %}

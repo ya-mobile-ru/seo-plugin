@@ -1,0 +1,16 @@
+plugin:
+    name: 'yamobile.seo::lang.plugin.name'
+    description: 'yamobile.seo::lang.plugin.description'
+    author: Yamobile
+    icon: icon-sitemap
+    homepage: ''
+permissions:
+    yamobile.seo.sitemap:
+        tab: 'SEO Pro'
+        label: 'yamobile.seo::lang.permissions.labels.sitemap'
+    yamobile.seo.meta:
+        tab: 'SEO Pro'
+        label: 'yamobile.seo::lang.permissions.labels.meta'
+    yamobile.seo.settings:
+        tab: 'SEO Pro'
+        label: 'yamobile.seo::lang.permissions.labels.settings'
