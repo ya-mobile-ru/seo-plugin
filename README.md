@@ -48,7 +48,3 @@ If the page has the `blogPost` component, you don't need to set the Model class.
 > If you find any errors or typos in the code or interface of the plugin, please let me know
 
 ---
-
-If you have any question about how to use this plugin, please don't hesitate to contact us. We're happy to help you.
-- telegram: [@Eugene_Kul](https://t.me/eugene_kul)
-- email: [gm742445004@gmail.com](mailto:gm742445004@gmail.com)
