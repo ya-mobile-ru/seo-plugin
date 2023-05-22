@@ -136,13 +136,27 @@ class Item {
 
         foreach ($extract as $param => $prop) {
             if($model) {
-                $replacedUrl = str_replace_first($param, $model->$prop, $replacedUrl);
+                $replacedUrl = str_replace_first($param, self::getSlugValue($param, $model), $replacedUrl);
             } else {
                 $replacedUrl = str_replace($param, '', $replacedUrl);
             }
         }
 
         return $replacedUrl;
+    }
+
+    private static function getSlugValue(string $slug, $item): string
+    {
+        $delimiter = "_";
+        $slug = str_replace(":", "", $slug);
+        $attributes = explode($delimiter, $slug);
+        $value = $item;
+
+        foreach ($attributes as $attribute) {
+            $value = $value->$attribute;
+        }
+
+        return $value;
     }
 
     public static function asCmsPage($page, $model = null) {
