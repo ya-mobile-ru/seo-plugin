@@ -32,18 +32,7 @@ class Sitemap {
                     }
                 }
             } else {
-                if ($page->hasComponent('blogPost')) {
-                    $itemClass = "Rainlab\Blog\Models\Post";
-                    $models = $itemClass::all();
-                    foreach ($models as $model) {
-                        if (!(integer)$model['published']) continue;
-                        if (!(integer)$model->metadata['use_in_sitemap']) continue;
-                        $this->addItemToSet(Item::asPost($page, $model));
-                    }
-                }
-                else {
-                    $this->addItemToSet(Item::asCmsPage($page));
-                }
+                $this->addItemToSet(Item::asCmsPage($page));
             }
 
         }
